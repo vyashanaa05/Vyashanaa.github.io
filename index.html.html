@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hanaa Vyas — Marketing & Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f4f0;
+    --gray: #8a8a8a;
+    --light: #e8e7e3;
+    --accent: #ff3b2f;
+    --dot: #d0cfcb;
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* DOT GRID BG */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2.5rem;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--white);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--gray);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 2.5rem 4rem;
+    padding-top: 6rem;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 0.5px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-size: clamp(3.5rem, 10vw, 9rem);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--gray);
+  }
+
+  .hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 3rem;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    padding-top: 1.5rem;
+  }
+
+  .hero-desc {
+    max-width: 460px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--gray);
+    font-weight: 300;
+  }
+
+  .hero-desc strong { color: var(--white); font-weight: 400; }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    border: 0.5px solid rgba(255,255,255,0.2);
+    padding: 0.75rem 1.5rem;
+    transition: all 0.25s;
+  }
+
+  .hero-cta:hover {
+    background: var(--white);
+    color: var(--black);
+    border-color: var(--white);
+  }
+
+  .hero-image-strip {
+    position: absolute;
+    top: 0; right: 0;
+    width: 38%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0.35;
+    mix-blend-mode: luminosity;
+  }
+
+  .hero-image-strip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    filter: grayscale(100%) contrast(1.1);
+  }
+
+  .hero-image-strip::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--black) 0%, transparent 35%, transparent 80%, var(--black) 100%),
+                linear-gradient(to bottom, var(--black) 0%, transparent 8%, transparent 92%, var(--black) 100%);
+  }
+
+  /* SECTIONS */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 2.5rem;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* ABOUT / NOTHING PITCH */
+  .nothing-pitch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .pitch-headline {
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .pitch-headline em { font-style: italic; color: var(--gray); }
+
+  .pitch-body {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--gray);
+    font-weight: 300;
+  }
+
+  .pitch-body p + p { margin-top: 1.2rem; }
+  .pitch-body strong { color: var(--white); font-weight: 400; }
+
+  /* METRICS STRIP */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 4rem;
+    border: 0.5px solid rgba(255,255,255,0.08);
+  }
+
+  .metric {
+    padding: 2rem 1.5rem;
+    border-right: 0.5px solid rgba(255,255,255,0.08);
+  }
+  .metric:last-child { border-right: none; }
+
+  .metric-num {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--white);
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .metric-num span {
+    color: var(--accent);
+    font-size: 1.8rem;
+  }
+
+  .metric-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* EXPERIENCE */
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 240px 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    padding: 2rem 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+  }
+
+  .exp-item:first-child { border-top: 0.5px solid rgba(255,255,255,0.06); }
+
+  .exp-company {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    padding-top: 0.1rem;
+  }
+
+  .exp-role {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-top: 0.25rem;
+    font-weight: 300;
+  }
+
+  .exp-content h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    color: var(--white);
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .exp-bullets li {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--gray);
+    padding-left: 1rem;
+    position: relative;
+    font-weight: 300;
+  }
+
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: rgba(255,255,255,0.2);
+  }
+
+  .exp-bullets strong { color: var(--white); font-weight: 400; }
+
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.2);
+    white-space: nowrap;
+    padding-top: 0.1rem;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    border: 0.5px solid rgba(255,255,255,0.08);
+    padding: 1.75rem;
+    transition: border-color 0.25s;
+  }
+
+  .skill-card:hover { border-color: rgba(255,255,255,0.2); }
+
+  .skill-card-icon {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .skill-card h4 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    padding: 0.3rem 0.6rem;
+  }
+
+  /* PROJECTS / PORTFOLIO */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+
+  .project-card {
+    border: 0.5px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+    transition: border-color 0.25s;
+    cursor: default;
+  }
+
+  .project-card:hover { border-color: rgba(255,255,255,0.25); }
+
+  .project-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: #111;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .project-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(80%);
+    transition: filter 0.4s, transform 0.4s;
+  }
+
+  .project-card:hover .project-img img {
+    filter: grayscale(20%);
+    transform: scale(1.03);
+  }
+
+  .project-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.15);
+  }
+
+  .project-body {
+    padding: 1.25rem;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+
+  .project-cat {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .project-title {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-desc {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--gray);
+    font-weight: 300;
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-headline {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .contact-headline em { font-style: italic; color: var(--gray); }
+
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem; }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    text-decoration: none;
+    color: var(--white);
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--accent); }
+
+  .contact-link-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-link-val { font-size: 0.95rem; font-weight: 300; }
+
+  .contact-link-arrow { color: var(--gray); font-size: 1.2rem; }
+
+  .contact-note {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--gray);
+    font-weight: 300;
+  }
+
+  .contact-note strong { color: var(--white); font-weight: 400; }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.15);
+  }
+
+  .footer-nothing {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* SCROLL ANIM */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MARQUEE */
+  .marquee-wrap {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+    border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    padding: 1rem 0;
+    background: rgba(255,59,47,0.04);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+  }
+
+  .marquee-track span {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,59,47,0.5);
+    flex-shrink: 0;
+  }
+
+  .marquee-track span.dot { color: rgba(255,59,47,0.2); }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* NOTHING LOGO WATERMARK */
+  .watermark {
+    position: absolute;
+    bottom: 3rem;
+    right: 2.5rem;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.04);
+    user-select: none;
+    font-size: 4rem;
+    font-weight: 300;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Hanaa Vyas</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-image-strip">
+    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80" alt="">
+  </div>
+
+  <div class="hero-tag">Marketing &amp; Strategy</div>
+
+  <h1 class="hero-name">
+    Hanaa<br>
+    <em>Vyas</em>
+  </h1>
+
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      <strong>MSc Marketing & Strategy, University of Warwick.</strong> I build campaigns that make people feel something. Fast mover. Sharp writer. No filler.
+    </p>
+    <a class="hero-cta" href="#contact">Get in touch →</a>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Content Strategy</span><span class="dot">·</span>
+    <span>Brand Partnerships</span><span class="dot">·</span>
+    <span>Digital Analytics</span><span class="dot">·</span>
+    <span>Social Media</span><span class="dot">·</span>
+    <span>CRM & Email</span><span class="dot">·</span>
+    <span>PR & Media</span><span class="dot">·</span>
+    <span>Community</span><span class="dot">·</span>
+    <span>Campaign Execution</span><span class="dot">·</span>
+    <span>Sponsorship</span><span class="dot">·</span>
+    <span>eCommerce</span><span class="dot">·</span>
+    <span>Content Strategy</span><span class="dot">·</span>
+    <span>Brand Partnerships</span><span class="dot">·</span>
+    <span>Digital Analytics</span><span class="dot">·</span>
+    <span>Social Media</span><span class="dot">·</span>
+    <span>CRM & Email</span><span class="dot">·</span>
+    <span>PR & Media</span><span class="dot">·</span>
+    <span>Community</span><span class="dot">·</span>
+    <span>Campaign Execution</span><span class="dot">·</span>
+    <span>Sponsorship</span><span class="dot">·</span>
+    <span>eCommerce</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">01 — About</div>
+
+  <div class="nothing-pitch fade-in">
+    <div>
+      <h2 class="pitch-headline">
+        Tech should make you<br>
+        <em>feel something.</em><br>
+        So should the marketing.
+      </h2>
+    </div>
+    <div class="pitch-body">
+      <p>
+        I'm drawn to <strong>Nothing</strong> because you're building a company that actually cares about how things look, feel, and communicate. That takes courage in an industry that defaults to safe.
+      </p>
+      <p>
+        I'm an <strong>MSc Marketing & Strategy student at Warwick</strong> with 18+ months across branding agencies, B2B, and consumer brands. I've run campaigns end-to-end, written copy that didn't sound like a press release, and secured real commercial partnerships — not hypothetical ones.
+      </p>
+      <p>
+        I move fast, take full ownership, and have a genuine distaste for corporate filler. I write how I talk. I think that's exactly what this team needs.
+      </p>
+    </div>
+  </div>
+
+  <!-- METRICS -->
+  <div class="metrics fade-in">
+    <div class="metric">
+      <span class="metric-num">50<span>%</span></span>
+      <span class="metric-label">Instagram engagement uplift</span>
+    </div>
+    <div class="metric">
+      <span class="metric-num">150<span>%</span></span>
+      <span class="metric-label">LinkedIn follower growth</span>
+    </div>
+    <div class="metric">
+      <span class="metric-num">1.5<span>K</span></span>
+      <span class="metric-label">Event attendees managed</span>
+    </div>
+    <div class="metric">
+      <span class="metric-num">40<span>%</span></span>
+      <span class="metric-label">Organic reach improvement</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">02 — Experience</div>
+
+  <div class="exp-list">
+
+    <div class="exp-item fade-in">
+      <div>
+        <div class="exp-company">Because Agency</div>
+        <div class="exp-role">Social Media Marketing Intern · India</div>
+      </div>
+      <div class="exp-content">
+        <h3>Campaigns that made people stop scrolling</h3>
+        <ul class="exp-bullets">
+          <li>Ran end-to-end campaigns for a government education platform — <strong>35% engagement uplift, 20% follower growth</strong> in one month.</li>
+          <li>Built data-driven content strategies: <strong>organic reach +40%, CTR +18%</strong> through sharp audience targeting.</li>
+          <li>Produced short-form creative assets (infographics, reels) achieving <strong>50% uplift in Instagram engagement rate</strong>.</li>
+          <li>Managed multiple industry verticals simultaneously without losing quality or momentum.</li>
+        </ul>
+      </div>
+      <div class="exp-date">Mar – Apr 2025</div>
+    </div>
+
+    <div class="exp-item fade-in">
+      <div>
+        <div class="exp-company">NEYO Ltd</div>
+        <div class="exp-role">Marketing Intern · UK</div>
+      </div>
+      <div class="exp-content">
+        <h3>B2B brand growth from scratch</h3>
+        <ul class="exp-bullets">
+          <li>Grew LinkedIn from <strong>1,000 → 2,500 followers (+150%)</strong> through targeted content and scheduling discipline.</li>
+          <li>Delivered marketing assets to same-day deadlines without compromising on brand quality.</li>
+          <li>Built fluency in digital analytics: campaign reporting, performance tracking, trend analysis, market segmentation.</li>
+        </ul>
+      </div>
+      <div class="exp-date">Jul 2023 – Oct 2024</div>
+    </div>
+
+    <div class="exp-item fade-in">
+      <div>
+        <div class="exp-company">CasaVyoMay</div>
+        <div class="exp-role">Event & Sponsorship Lead · India</div>
+      </div>
+      <div class="exp-content">
+        <h3>Real sponsorship deals, not hypothetical ones</h3>
+        <ul class="exp-bullets">
+          <li>Coordinated <strong>4 large-scale events</strong> for up to 1,500 attendees as primary liaison between organisers and sponsors.</li>
+          <li>Secured commercial partnerships with <strong>IDFC Bank and Concept Motors</strong> (Hyundai, Kia, Honda) through concept-selling and relationship management.</li>
+        </ul>
+      </div>
+      <div class="exp-date">May 2024</div>
+    </div>
+
+    <div class="exp-item fade-in">
+      <div>
+        <div class="exp-company">Warwick GD&M Society</div>
+        <div class="exp-role">Outreach & Careers Executive</div>
+      </div>
+      <div class="exp-content">
+        <h3>Commercial thinking in a student-run environment</h3>
+        <ul class="exp-bullets">
+          <li>Leading marketing and outreach to grow club visibility and build <strong>employer partnerships</strong> through data-driven campaigns.</li>
+        </ul>
+      </div>
+      <div class="exp-date">Oct 2025 – Present</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="work">
+  <div class="section-label">03 — Projects</div>
+
+  <div class="projects-grid">
+
+    <div class="project-card fade-in">
+      <div class="project-img">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80" alt="F1 Fan Intelligence">
+      </div>
+      <div class="project-body">
+        <div class="project-cat">Project Management · IB9RG0 · Warwick Business School</div>
+        <div class="project-title">F1 Fan Intelligence &amp; Campaign Optimisation Programme</div>
+        <div class="project-desc">A hypothetical programme pitched to Formula One World Championship Limited — proposing a data-driven Fan Intelligence system to unify audience insights and optimise campaigns across F1's dual audiences: hardcore technical fans and expanding mainstream viewers. Applied risk management and integrated planning frameworks to design the programme from scratch.</div>
+        <div class="project-tags">
+          <span class="tag">Risk Management</span>
+          <span class="tag">Integrated Planning</span>
+          <span class="tag">Stakeholder Strategy</span>
+          <span class="tag">PM Maturity Analysis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-img">
+        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80" alt="Concorde Agreement">
+      </div>
+      <div class="project-body">
+        <div class="project-cat">Negotiation · IB9RG0 · Warwick Business School</div>
+        <div class="project-title">2021 Formula 1 Concorde Agreement — Commercial &amp; Legal Frameworks Analysis</div>
+        <div class="project-desc">In-depth case study examining the commercial architecture of the 2021 Concorde Agreement, analysing revenue distribution structures, stakeholder negotiation dynamics, and the power balance between the FIA, Formula One Group, and the ten constructors.</div>
+        <div class="project-tags">
+          <span class="tag">Commercial Frameworks</span>
+          <span class="tag">Negotiation Dynamics</span>
+          <span class="tag">Revenue Distribution</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-img">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="Feel First INKEY List">
+      </div>
+      <div class="project-body">
+        <div class="project-cat">Integrated Campaign · IB845B · Marketing Through Social Media</div>
+        <div class="project-title">'Feel First' — The INKEY List Brand Campaign</div>
+        <div class="project-desc">Full integrated marketing campaign developed and produced for The INKEY List — 12-week social media content calendar, campaign video production (iMovie), strategy slide decks, and a live presentation. Delivered end-to-end from brief to execution as a group project.</div>
+        <div class="project-tags">
+          <span class="tag">Content Strategy</span>
+          <span class="tag">Video Production</span>
+          <span class="tag">Campaign Delivery</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-img">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="PM Simulation">
+      </div>
+      <div class="project-body">
+        <div class="project-cat">Simulation · Project Management Module · Warwick</div>
+        <div class="project-title">Live Project Management Simulation — 7-Hour Real-Time Team Exercise</div>
+        <div class="project-desc">Full-day live simulation managing a complex project from brief to completion — real-time stakeholder decisions, critical path analysis, Gantt chart preparation, and competing priorities under time pressure across multiple project stages.</div>
+        <div class="project-tags">
+          <span class="tag">Critical Path Analysis</span>
+          <span class="tag">Gantt Chart</span>
+          <span class="tag">Stakeholder Decisions</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">04 — Skills</div>
+
+  <div class="skills-grid">
+
+    <div class="skill-card fade-in">
+      <div class="skill-card-icon">01</div>
+      <h4>Digital Marketing</h4>
+      <div class="skill-tags">
+        <span class="tag">Social Campaigns</span>
+        <span class="tag">CRM / HubSpot</span>
+        <span class="tag">Email / Mailchimp</span>
+        <span class="tag">Google Analytics</span>
+        <span class="tag">SEO</span>
+        <span class="tag">PDP Copy</span>
+        <span class="tag">360° Campaigns</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <div class="skill-card-icon">02</div>
+      <h4>Content & Creative</h4>
+      <div class="skill-tags">
+        <span class="tag">Short-form Video</span>
+        <span class="tag">Copywriting</span>
+        <span class="tag">Photoshop (Adv.)</span>
+        <span class="tag">Canva (Adv.)</span>
+        <span class="tag">Reels / TikTok</span>
+        <span class="tag">Press Releases</span>
+        <span class="tag">Brand Voice</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <div class="skill-card-icon">03</div>
+      <h4>Analytics & Reporting</h4>
+      <div class="skill-tags">
+        <span class="tag">Performance Tracking</span>
+        <span class="tag">Audience Insights</span>
+        <span class="tag">Excel (Advanced)</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">SQL (Basic)</span>
+        <span class="tag">Trend Analysis</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <div class="skill-card-icon">04</div>
+      <h4>PR & Partnerships</h4>
+      <div class="skill-tags">
+        <span class="tag">Sponsorship Acq.</span>
+        <span class="tag">Media Relations</span>
+        <span class="tag">Event Coordination</span>
+        <span class="tag">Concept Selling</span>
+        <span class="tag">Relationship Mgmt</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <div class="skill-card-icon">05</div>
+      <h4>Strategy</h4>
+      <div class="skill-tags">
+        <span class="tag">Market Research</span>
+        <span class="tag">Competitive Analysis</span>
+        <span class="tag">Brand Strategy</span>
+        <span class="tag">Consumer Behaviour</span>
+        <span class="tag">Warwick MSc</span>
+      </div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <div class="skill-card-icon">06</div>
+      <h4>Languages</h4>
+      <div class="skill-tags">
+        <span class="tag">English C2</span>
+        <span class="tag">Hindi C2</span>
+        <span class="tag">Gujarati C2</span>
+        <span class="tag">French A1</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">05 — Contact</div>
+
+  <div class="contact-grid">
+    <div>
+      <h2 class="contact-headline fade-in">
+        Let's make tech<br>
+        feel something<br>
+        <em>together.</em>
+      </h2>
+
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:Vyashanaa05@gmail.com">
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-val">Vyashanaa05@gmail.com</div>
+          </div>
+          <div class="contact-link-arrow">→</div>
+        </a>
+        <a class="contact-link" href="https://linkedin.com/in/hanaa-vyas-221570215" target="_blank">
+          <div>
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-val">linkedin.com/in/hanaa-vyas-221570215</div>
+          </div>
+          <div class="contact-link-arrow">→</div>
+        </a>
+        <a class="contact-link" href="tel:07810208843">
+          <div>
+            <div class="contact-link-label">Phone</div>
+            <div class="contact-link-val">07810208843</div>
+          </div>
+          <div class="contact-link-arrow">→</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-note fade-in">
+      <p>
+        Based in <strong>Coventry</strong> — within 60 minutes of London. Available full-time from <strong>September 2026</strong> on completion of my MSc at Warwick.
+      </p>
+      <br>
+      <p>
+        Right to work in the UK (Student Visa). I move fast, take full ownership, and genuinely believe tech should make you feel something. If that sounds like the kind of person Nothing needs on the marketing team — <strong>let's talk.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2026 Hanaa Vyas</span>
+  <span class="footer-nothing">Applying to Nothing · London</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
